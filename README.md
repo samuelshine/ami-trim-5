@@ -10,14 +10,14 @@ Lab submissions for the MCA trimester 5 course at Christ University.
 ## Lab 2: CNN feature extraction, from pixels to latent vectors (`lab-2/`)
 
 - `CNN_Latent_Features.ipynb` - the lab notebook, in TensorFlow/Keras.
-  - Part A: a PneumoniaMNIST chest X-ray (grayscale) goes through a small CNN. Conv1 holds 8 hand-written kernels from [setosa.io/ev/image-kernels](https://setosa.io/ev/image-kernels/) (blur, sharpen, emboss, outline, four Sobels). Conv2 and Conv3 are built-in `Conv2D` layers with 16 and 32 filters, and a Dense layer gives a 64-D latent vector.
+  - Part A: a PneumoniaMNIST chest X-ray and a BreastMNIST breast ultrasound (both grayscale) go through the same small CNN. Conv1 holds 8 hand-written kernels from [setosa.io/ev/image-kernels](https://setosa.io/ev/image-kernels/) (blur, sharpen, emboss, outline, four Sobels). Conv2 and Conv3 are built-in `Conv2D` layers with 16 and 32 filters, and a Dense layer gives a 64-D latent vector. The two modalities are then compared filter by filter and by latent-vector similarity.
   - Part B: an RGB cat photo (`skimage.data.chelsea`) goes through 8 hand-written filters (Sobel edges, Gabor textures, blob shapes) and through pretrained VGG16, whose global-average-pooled output is a 512-D latent vector.
   - Complexity element: convolution, ReLU and max pooling are written by hand in NumPy and checked against TensorFlow's built-ins at every step, including VGG16's own first-layer weights.
   - Shows every filter, the feature maps after each conv and pool layer, both architectures, the flattened features, the latent vectors, and a side-by-side view of edge, texture, shape, part and semantic features.
 - `CNN_Latent_Features.pdf` - a PDF export of the executed notebook.
 - `Pixel to Latent Representation.ipynb` - the base code the lab builds on.
-- `outputs/` - the two latent vectors as CSV.
-- The PneumoniaMNIST file (214 MB) is not in the repo, and the notebook downloads it into `lab-2/data/` on first run.
+- `outputs/` - the three latent vectors (X-ray, ultrasound, cat) as CSV.
+- The PneumoniaMNIST (214 MB) and BreastMNIST (31 MB) files are not in the repo, and the notebook downloads them into `lab-2/data/` on first run.
 
 ## Running it
 
