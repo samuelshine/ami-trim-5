@@ -20,6 +20,16 @@ Lab submissions for the MCA trimester 5 course at Christ University.
 - `outputs/` - the three latent vectors (X-ray, ultrasound, cat) as CSV.
 - The PneumoniaMNIST (214 MB) and BreastMNIST (31 MB) files are not in the repo, and the notebook downloads them into `lab-2/data/` on first run (MNIST comes through Keras). A full run takes about 20 minutes, most of it the LeNet-5 sweep.
 
+## Lab 3: Text to a flattened latent vector (`lab-3/`)
+
+- `Text_Latent_Representation.ipynb` - the lab notebook, in TensorFlow/Keras.
+  - Part A covers the 8 tasks on five customer reviews: cleaning, a 16-word vocabulary (18 IDs with `<PAD>` = 0 and `<OOV>` = 1), token sequences, post-padding to 7, an 18 x 8 embedding trained on sentiment, the 5 x 7 x 8 embedding tensor, one 56-D flattened vector per review, and 2-D PCA of the words and the reviews.
+  - Every stage is written by hand and checked against the Keras built-in (`TextVectorization`, `pad_sequences`, `Embedding`, `Flatten`), and each step ends with an `assert`.
+  - Part B (self-learning): the findings re-checked over 5 seeds, Flatten vs average pooling (average pooling puts 99.9% of the learned change on one axis), a NumPy skip-gram word2vec with gradient checking (it puts "love" next to "dislike" with no labels), and unseen reviews with out-of-vocabulary words and negation.
+  - Ends with a checklist that maps each task to the expected output it verified.
+- `Text_Latent_Representation.pdf` - a PDF export of the executed notebook.
+- `outputs/flattened_vectors.csv` - the five 56-D flattened review vectors.
+
 ## Running it
 
 ```bash
@@ -27,5 +37,6 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt           # Lab 1
 pip install -r lab-2/requirements.txt     # Lab 2
+pip install -r lab-3/requirements.txt     # Lab 3
 jupyter notebook
 ```
